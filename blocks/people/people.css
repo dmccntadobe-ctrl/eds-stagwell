@@ -134,7 +134,7 @@
 @media (width >= 981px) {
   .people .people-featured > div,
   .people .people-featured > a {
-    grid-template-columns: 778px 1fr;
+    grid-template-columns: minmax(0, 778fr) minmax(0, 492fr);
     gap: 50px;
   }
 

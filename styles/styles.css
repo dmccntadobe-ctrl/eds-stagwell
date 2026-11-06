@@ -499,7 +499,7 @@ main > .section.sky h1 em {
 }
 
 main > .section.sky h4 {
-  margin: 12px 0 20px;
+  margin: 28px 0 20px;
   font-weight: 500;
   letter-spacing: 0.12em;
 }
@@ -659,4 +659,8 @@ main > .section.teal p {
 
 main > .section.split h2 + p {
   margin-top: 40px;
+}
+
+main > .section.teal h2 {
+  margin-bottom: 24px;
 }

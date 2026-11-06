@@ -135,7 +135,7 @@ main > .section.hero-container {
   }
 
   .hero .hero-top {
-    grid-template-columns: 1fr 401px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 401px);
     min-height: 234px;
     padding-top: 0;
   }
