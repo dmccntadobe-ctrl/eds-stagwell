@@ -643,3 +643,7 @@ main > .section.contact h2 {
 main > .section.teal p {
   font-weight: 300;
 }
+
+main > .section.split h2 + p {
+  margin-top: 40px;
+}

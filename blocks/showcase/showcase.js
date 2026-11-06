@@ -92,10 +92,9 @@ export default function decorate(block) {
     });
   }, { passive: true });
 
-  intro.append(nav);
   block.setAttribute('role', 'region');
   block.setAttribute('aria-roledescription', 'carousel');
   block.setAttribute('aria-label', intro.querySelector('h2')?.textContent.trim() || 'Slides');
-  block.replaceChildren(intro, track);
+  block.replaceChildren(intro, track, nav);
   update(0);
 }

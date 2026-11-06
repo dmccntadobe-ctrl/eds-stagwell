@@ -1,10 +1,15 @@
 .showcase {
   display: grid;
+  grid-template-areas:
+    'intro'
+    'track'
+    'nav';
   background: var(--navy-color);
   color: var(--light-color);
 }
 
 .showcase .showcase-intro {
+  grid-area: intro;
   padding: 40px var(--page-padding) 50px;
 }
 
@@ -50,9 +55,11 @@
 }
 
 .showcase .showcase-nav {
+  grid-area: nav;
   display: flex;
   align-items: center;
-  margin-top: 25px;
+  align-self: end;
+  padding: 25px var(--page-padding) 40px;
 }
 
 .showcase .showcase-count {
@@ -92,6 +99,7 @@
 }
 
 .showcase .showcase-track {
+  grid-area: track;
   display: flex;
   margin: 0;
   padding: 0;
@@ -140,9 +148,9 @@
 
 .showcase .showcase-body p:first-child {
   margin: 0 0 10px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 38.4px;
+  line-height: 24px;
   text-transform: uppercase;
 }
 
@@ -161,15 +169,26 @@
 }
 
 @media (width >= 981px) {
+  .showcase {
+    grid-template:
+      'intro track' 1fr
+      'nav track' auto / calc(584px + max(0px, (100vw - 1440px) / 2)) 1fr;
+  }
+
+  .showcase .showcase-intro {
+    padding: 50px 90px 25px var(--page-gutter);
+  }
+
   .showcase .showcase-intro h2 {
     margin-bottom: 100px;
   }
 
-  .showcase {
-    grid-template-columns: calc(584px + max(0px, (100vw - 1440px) / 2)) 1fr;
+  .showcase .showcase-nav {
+    padding: 0 90px 80px var(--page-gutter);
   }
 
-  .showcase .showcase-intro {
-    padding: 50px 90px 50px max(60px, calc((100vw - 1440px) / 2 + 60px));
+  .showcase .showcase-body p:first-child {
+    font-size: 24px;
+    line-height: 38.4px;
   }
 }
