@@ -36,7 +36,7 @@
   /* "Our Story": text and a wide picture */
   .columns.story > div {
     display: grid;
-    grid-template-columns: 521px 1fr;
+    grid-template-columns: minmax(0, 521fr) minmax(0, 725fr);
     gap: 74px;
     align-items: start;
   }
@@ -44,7 +44,7 @@
   /* "Accelerating Change" band */
   .columns.band > div {
     display: grid;
-    grid-template-columns: 1fr 379px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 379px);
     gap: 21px;
     align-items: start;
   }
@@ -60,7 +60,7 @@
   /* meet mark intro: text left, portrait right with gold rule */
   .columns.sky > div {
     display: grid;
-    grid-template-columns: 785px 1fr;
+    grid-template-columns: minmax(0, 785fr) minmax(0, 475fr);
     gap: 60px;
     align-items: end;
   }
@@ -72,7 +72,7 @@
   /* leadership highlights */
   .columns.highlights > div {
     display: grid;
-    grid-template-columns: 395px 1fr;
+    grid-template-columns: minmax(0, 395px) minmax(0, 1fr);
     gap: 0;
     align-items: start;
   }
@@ -80,7 +80,7 @@
   /* "The Outsider" */
   .columns.outsider > div {
     display: grid;
-    grid-template-columns: 766px 462px;
+    grid-template-columns: minmax(0, 766fr) minmax(0, 462fr);
     gap: 60px;
     align-items: center;
   }
@@ -88,14 +88,14 @@
   /* contact: heading + intro, then detail groups */
   .columns.contact > div {
     display: grid;
-    grid-template-columns: 786px 178px 1fr;
+    grid-template-columns: minmax(0, 786fr) minmax(0, 178fr) minmax(0, 356fr);
     gap: 0;
     align-items: start;
   }
 
   /* single-row contact (heading left, details right) */
   .columns.contact.single > div {
-    grid-template-columns: 786px 1fr;
+    grid-template-columns: minmax(0, 786fr) minmax(0, 534fr);
   }
 
   .columns.sky > div > div:last-child {
