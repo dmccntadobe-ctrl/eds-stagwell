@@ -98,6 +98,11 @@
     grid-template-columns: 786px 1fr;
   }
 
+  .columns.sky > div > div:last-child {
+    justify-self: end;
+    max-width: 462px;
+  }
+
   .columns.highlights > div > div:last-child {
     padding-left: 86px;
     border-left: 1px solid #c5c6c7;
@@ -113,10 +118,32 @@
   padding-left: 18px;
 }
 
-.columns.highlights li {
-  margin: 0 0 18px;
-}
-
 .columns.contact > div > div {
   margin-bottom: 24px;
+}
+
+.columns.story h2 {
+  margin-bottom: 40px;
+}
+
+.columns.story h2 em {
+  display: inline;
+  font-size: 1.107em;
+}
+
+.columns.sky h3 {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.columns.sky p {
+  margin-top: 40px;
+}
+
+.columns.highlights li {
+  margin-bottom: 26px;
+}
+
+.columns.contact.single h2 em {
+  color: var(--teal-color);
 }

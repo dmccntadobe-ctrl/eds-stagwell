@@ -22,7 +22,7 @@
 .people .people-featured blockquote {
   position: relative;
   margin: 0;
-  padding-top: 56px;
+  padding-top: 68px;
   font-size: 24px;
   letter-spacing: 2.88px;
   line-height: 28.8px;
@@ -36,9 +36,10 @@
   left: 0;
   color: var(--gold-color);
   font-family: var(--serif-font-family);
-  font-size: 72px;
+  font-size: 96px;
   font-style: italic;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 0.8;
 }
 
 .people .people-featured .people-who {
@@ -104,7 +105,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 15px;
-  margin-top: 40px;
+  margin-top: 70px;
 }
 
 .people .people-nav button {
@@ -140,4 +141,8 @@
   .people .people-item {
     flex-basis: 250px;
   }
+}
+
+.people-wrapper {
+  margin-top: 60px;
 }
