@@ -1,7 +1,7 @@
 /**
  * Stagwell home hero.
  * Row 1: [logo image | link paragraph + h1]. The video stage below plays the linked
- * video if the block contains a link ending in .mp4, otherwise it links to the call-to-action.
+ * <video> if the block contains one, otherwise it links to the call-to-action.
  */
 export default function decorate(block) {
   const row = block.firstElementChild;
@@ -19,13 +19,9 @@ export default function decorate(block) {
 
   const stage = document.createElement('div');
   stage.className = 'hero-stage';
-  const videoLink = top.querySelector('a[href$=".mp4"]');
-  const videoSrc = videoLink?.href;
-  videoLink?.closest('p')?.remove();
   const callLink = textCell?.querySelector('a');
-  if (videoSrc) {
-    const video = document.createElement('video');
-    video.src = videoSrc;
+  const video = top.querySelector('video');
+  if (video) {
     video.controls = true;
     video.playsInline = true;
     video.preload = 'metadata';
