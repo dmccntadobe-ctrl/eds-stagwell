@@ -353,6 +353,10 @@ main > .section.teal :focus-visible {
   }
 }
 
+main > .section.full {
+  padding: 0;
+}
+
 main > .section.full > div {
   max-width: none;
   padding: 0;
@@ -557,4 +561,12 @@ main > .section.contact strong {
   font-size: 14px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
+}
+
+main > .section.teal:has(.columns.outsider) {
+  padding: 80px 0;
+}
+
+main > .section.light:has(.columns.highlights) {
+  padding: 70px 0 50px;
 }
