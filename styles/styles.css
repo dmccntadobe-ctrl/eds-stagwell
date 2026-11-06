@@ -493,6 +493,9 @@ main > .section.statement > div {
 }
 
 main > .section.statement h2 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   font-size: 50px;
   line-height: 0.8;
 }
@@ -541,8 +544,18 @@ main > .section.split {
 
   main > .section.split > div:last-child {
     max-width: none;
-    margin: 70px 0 0;
+    margin: 90px 0 0;
     padding: 0 60px 0 40px;
+  }
+
+  main > .section.split > div:first-child .default-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  main > .section.split > div:first-child h2 + p {
+    margin-top: auto;
   }
 }
 

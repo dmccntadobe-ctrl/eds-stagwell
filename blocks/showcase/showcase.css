@@ -16,9 +16,7 @@
 }
 
 .showcase .showcase-intro h2 em {
-  display: inline;
   color: var(--light-color);
-  font-size: 1.107em;
 }
 
 .showcase .showcase-intro p {
@@ -131,7 +129,7 @@
 }
 
 .showcase .showcase-body {
-  min-height: 165px;
+  min-height: 279px;
   text-align: center;
 }
 

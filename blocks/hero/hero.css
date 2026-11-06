@@ -23,7 +23,8 @@ main > .section.hero-container {
 
 .hero .hero-logo img {
   display: block;
-  width: min(100%, 480px);
+  width: 480px;
+  max-width: 100%;
   height: auto;
 }
 
@@ -38,10 +39,10 @@ main > .section.hero-container {
 .hero .hero-text p::before {
   content: '▶' / '';
   display: grid;
-  flex: 0 0 50px;
+  flex: 0 0 45px;
   place-items: center;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: var(--teal-color);
   color: #fff;
