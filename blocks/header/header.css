@@ -273,7 +273,30 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
-header nav .nav-sections a:any-link {
-  color: var(--navy-color);
-  font-weight: 500;
+
+@media (width >= 900px) {
+  header nav .nav-brand {
+    order: 2;
+    flex: 0 0 auto;
+  }
+
+  header nav .nav-brand img {
+    width: 140px;
+  }
+
+  header nav .nav-sections {
+    order: 1;
+    flex: 1 1 auto;
+  }
+
+  header nav .nav-sections ul > li {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  header nav .nav-sections a:any-link {
+    color: var(--navy-color);
+  }
 }
