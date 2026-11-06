@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e3e6e8;
   background-color: var(--background-color);
   width: 100%;
   z-index: 2;
@@ -40,8 +40,8 @@ header nav[aria-expanded='true'] {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: 1440px;
+    padding: 0 60px;
   }
 }
 
@@ -138,14 +138,14 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 160px;
+  flex-basis: 140px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
 }
 
 header nav .nav-brand img {
-  width: 160px;
+  width: 140px;
   height: auto;
 }
 
@@ -170,7 +170,9 @@ header nav .nav-sections ul {
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 header nav .nav-sections .nav-drop > button {
@@ -210,7 +212,7 @@ header nav .nav-sections ul > li > ul {
 }
 
 header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
@@ -226,7 +228,7 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 24px;
+    gap: 64px;
     margin: 0;
   }
 
@@ -273,7 +275,6 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
-
 @media (width >= 900px) {
   header nav .nav-brand {
     order: 2;
@@ -281,22 +282,11 @@ header nav .nav-tools {
   }
 
   header nav .nav-brand img {
-    width: 140px;
+    width: 185px;
   }
 
   header nav .nav-sections {
     order: 1;
     flex: 1 1 auto;
-  }
-
-  header nav .nav-sections ul > li {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  header nav .nav-sections a:any-link {
-    color: var(--navy-color);
   }
 }

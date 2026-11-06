@@ -16,6 +16,7 @@
 .news .news-image img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
@@ -28,25 +29,26 @@
 }
 
 .news .news-date {
-  color: var(--teal-color);
-  font-size: 10px;
+  color: var(--teal-text-color);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.news .news-body strong {
+.news .news-body h3 {
   color: var(--navy-color);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
+  letter-spacing: 0;
   line-height: 1.3;
 }
 
-.news li a:hover strong {
+.news li a:hover h3 {
   text-decoration: underline;
 }
 
-@media (width >= 900px) {
+@media (width >= 981px) {
   .news ul {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;

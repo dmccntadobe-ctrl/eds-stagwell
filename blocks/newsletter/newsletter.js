@@ -1,30 +1,44 @@
 /**
  * Newsletter sign-up form. Authors may add a link in the block: its URL is used as the
- * form endpoint (POST of the form fields). Without it, the form renders but cannot submit.
+ * form endpoint (POST of the form fields). Only https endpoints are accepted.
+ * Without one the form renders but cannot be submitted.
+ * @param {Element} block The block element
  */
 export default function decorate(block) {
-  const endpoint = block.querySelector('a')?.href;
+  let endpoint = '';
+  try {
+    const url = new URL(block.querySelector('a')?.href || '');
+    if (url.protocol === 'https:') endpoint = url.href;
+  } catch (e) {
+    endpoint = '';
+  }
+
   const form = document.createElement('form');
   form.className = 'newsletter-form';
-  form.noValidate = false;
 
-  const field = (name, label, type = 'text', required = false) => {
+  const field = (name, label, type, autocomplete, required = false) => {
     const wrap = document.createElement('label');
     wrap.className = 'newsletter-field';
+    const text = document.createElement('span');
+    text.append(label);
+    if (required) {
+      const star = document.createElement('span');
+      star.setAttribute('aria-hidden', 'true');
+      star.textContent = ' *';
+      text.append(star);
+    }
     const input = document.createElement('input');
     input.type = type;
     input.name = name;
     input.required = required;
-    input.placeholder = ' ';
-    const span = document.createElement('span');
-    span.textContent = required ? `${label} *` : label;
-    wrap.append(input, span);
+    input.autocomplete = autocomplete;
+    wrap.append(text, input);
     return wrap;
   };
 
   const interests = document.createElement('fieldset');
   const legend = document.createElement('legend');
-  legend.textContent = 'I am interested in information about :';
+  legend.textContent = 'I am interested in information about:';
   interests.append(legend);
   ['Investor Relations', 'General News'].forEach((label) => {
     const l = document.createElement('label');
@@ -33,18 +47,22 @@ export default function decorate(block) {
     cb.type = 'checkbox';
     cb.name = 'interests';
     cb.value = label;
-    l.append(cb, ` ${label}`);
+    l.append(cb, label);
     interests.append(l);
   });
 
   const submit = document.createElement('button');
   submit.type = 'submit';
   submit.className = 'newsletter-submit';
-  submit.innerHTML = 'Submit <span aria-hidden="true">→</span>';
+  submit.append('Submit ');
+  const arrow = document.createElement('span');
+  arrow.setAttribute('aria-hidden', 'true');
+  arrow.textContent = '→';
+  submit.append(arrow);
+
   const status = document.createElement('p');
   status.className = 'newsletter-status';
   status.setAttribute('role', 'status');
-
   if (!endpoint) {
     submit.disabled = true;
     status.textContent = 'Sign-up is not connected yet.';
@@ -54,6 +72,7 @@ export default function decorate(block) {
     e.preventDefault();
     if (!endpoint) return;
     submit.disabled = true;
+    status.textContent = '';
     try {
       const resp = await fetch(endpoint, { method: 'POST', body: new FormData(form) });
       status.textContent = resp.ok ? 'Thank you for signing up.' : 'Something went wrong. Please try again.';
@@ -65,9 +84,9 @@ export default function decorate(block) {
   });
 
   form.append(
-    field('firstName', 'First Name'),
-    field('lastName', 'Last Name'),
-    field('email', 'Email', 'email', true),
+    field('firstName', 'First Name', 'text', 'given-name'),
+    field('lastName', 'Last Name', 'text', 'family-name'),
+    field('email', 'Email', 'email', 'email', true),
     interests,
     submit,
     status,

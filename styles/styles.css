@@ -16,10 +16,11 @@
   --light-color: #f5f7f6;
   --navy-color: #003349;
   --teal-color: #009cbd;
+  --teal-text-color: #00748c;
   --serif-font-family: spectral, georgia, 'Times New Roman', serif;
   --gold-color: #ffb81c;
-  --dark-color: #666;
-  --text-color: #333;
+  --dark-color: #4a6672;
+  --text-color: #003349;
   --link-color: #003349;
   --link-hover-color: #009cbd;
 
@@ -28,20 +29,20 @@
   --heading-font-family: montserrat, montserrat-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 15px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 52px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-xxl: clamp(48px, 6.4vw, 92px);
+  --heading-font-size-xl: clamp(36px, 3.9vw, 56px);
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 14px;
+  --heading-font-size-xs: 14px;
 
   /* nav height */
-  --nav-height: 80px;
+  --nav-height: 71px;
 }
 
 /* fallback fonts */
@@ -51,22 +52,6 @@
   src: local('Arial');
 }
 
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
-}
 
 body {
   display: none;
@@ -75,7 +60,9 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
 }
 
 body.appear {
@@ -102,19 +89,30 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0;
   font-family: var(--heading-font-family);
   font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 0.95;
+  overflow-wrap: break-word;
   scroll-margin: 40px;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
 h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
+
+h3 {
+  font-size: var(--heading-font-size-l);
+  letter-spacing: 2px;
+  line-height: 1.17;
+}
+
+h4 {
+  font-size: var(--heading-font-size-m);
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
@@ -124,8 +122,8 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 code,
@@ -154,13 +152,13 @@ button {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
+  color: var(--navy-color);
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--teal-text-color);
   text-decoration: underline;
 }
 
@@ -296,22 +294,19 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 0;
+  padding: 50px 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
-  margin: auto;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 0 24px;
 }
 
-main > .section:first-of-type {
-  margin-top: 0;
-}
-
-@media (width >= 900px) {
+@media (width >= 981px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 60px;
   }
 }
 
@@ -320,17 +315,13 @@ main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: 50px 0;
 }
 
-/* ===== Stagwell look and feel ===== */
-@media (width >= 900px) {
-  :root {
-    --heading-font-size-xxl: 88px;
-    --heading-font-size-xl: 52px;
-    --body-font-size-m: 14px;
-    --body-font-size-s: 13px;
-  }
+/* ===== Stagwell look and feel (values measured from stagwellglobal.com at 1440px) ===== */
+h1,
+h2 {
+  color: var(--navy-color);
 }
 
 h1 em,
@@ -339,48 +330,64 @@ h3 em {
   display: block;
   color: var(--teal-color);
   font-family: var(--serif-font-family);
+  font-size: 1.107em;
   font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-weight: 300;
+  letter-spacing: -0.04em;
 }
 
-h1,
-h2 {
-  margin-top: 0;
-  line-height: 1;
-  color: var(--navy-color);
+:focus-visible {
+  outline: 2px solid var(--teal-color);
+  outline-offset: 3px;
 }
 
+main > .section.navy :focus-visible,
+main > .section.teal :focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+main > .section.full > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* CTA links: bold small caps text followed by a teal arrow circle */
 /* stylelint-disable no-descending-specificity */
-
-/* CTA links: small caps text with a teal arrow circle */
 a.button.primary,
 a.button.secondary {
-  gap: 12px;
+  gap: 15px;
   border: 0;
   border-radius: 0;
-  padding: 0;
+  padding: 0 0 10px;
   background: transparent;
   color: var(--navy-color);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 1px;
+  line-height: 14px;
   text-transform: uppercase;
   overflow: visible;
 }
 
 a.button.primary::after,
 a.button.secondary::after {
-  content: '→';
+  content: '→' / '';
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--teal-color);
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0;
 }
 
@@ -390,32 +397,44 @@ a.button.primary:hover::after {
 
 /* stylelint-enable no-descending-specificity */
 
-/* sections (set through Section Metadata "Style") */
-main > .section.full > div {
-  max-width: none;
-  padding: 0;
+/* section styles (Section Metadata "Style") */
+main > .section.navy {
+  background: var(--navy-color);
+  color: var(--light-color);
 }
 
-main > .section.intro,
-main > .section.light,
-main > .section.band,
-main > .section.statement,
-main > .section.navy,
-main > .section.teal,
-main > .section.sky,
-main > .section.split {
-  margin: 0;
-  padding: 56px 0;
+main > .section.navy h1,
+main > .section.navy h2,
+main > .section.navy a:any-link {
+  color: var(--light-color);
 }
 
+main > .section.navy h2 em {
+  color: var(--gold-color);
+}
+
+main > .section.teal {
+  padding: 60px 0;
+  background: var(--teal-color);
+  color: var(--light-color);
+}
+
+main > .section.teal h1,
+main > .section.teal h2,
+main > .section.teal a:any-link,
+main > .section.teal h2 em {
+  color: var(--light-color);
+}
+
+main > .section.navy a.button,
+main > .section.teal a.button {
+  color: var(--light-color);
+}
+
+/* page intro band (about, network) */
 main > .section.intro {
-  min-height: 340px;
-  padding: 72px 0 120px;
+  padding: 70px 0 200px;
   background: var(--light-color);
-}
-
-main > .section.intro h1 {
-  font-size: var(--heading-font-size-xxl);
 }
 
 main > .section.intro h1 em {
@@ -423,140 +442,119 @@ main > .section.intro h1 em {
 }
 
 main > .section.intro p {
-  max-width: 340px;
-  color: var(--navy-color);
-  font-size: 12px;
+  max-width: 428px;
+  margin-top: 40px;
 }
 
+/* meet mark top band */
 main > .section.sky {
-  background: linear-gradient(180deg, #8fd3e4 0%, #fff 100%);
-  padding-bottom: 72px;
+  padding: 130px 0 20px;
+  background: linear-gradient(180deg, #9bd7e6 0%, var(--light-color) 100%);
 }
 
 main > .section.sky h1 em {
   color: var(--navy-color);
 }
 
-main > .section.sky h3 {
-  margin: 4px 0;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  line-height: 1.5;
-}
-
 main > .section.sky h4 {
-  color: var(--navy-color);
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  margin: 12px 0 20px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
 }
 
-main > .section.light,
+main > .section.sky h3 {
+  margin: 0 0 6px 29px;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.35;
+}
+
+/* home statement */
+main > .section.statement > div {
+  max-width: 1152px;
+}
+
+main > .section.statement h2 {
+  font-size: 50px;
+  line-height: 0.8;
+}
+
+main > .section.statement h2 em {
+  display: inline;
+  font-size: 1em;
+  letter-spacing: normal;
+}
+
+/* about "Accelerating Change" band */
 main > .section.band {
   background: var(--light-color);
 }
 
-main > .section.navy {
-  background: var(--navy-color);
-  color: #fff;
-}
-
-main > .section.navy h1,
-main > .section.navy h2 {
-  color: #fff;
-}
-
-main > .section.navy h2 em {
-  color: var(--gold-color);
-}
-
-main > .section.navy a.button,
-main > .section.teal a.button {
-  color: #fff;
-}
-
-main > .section.teal {
-  background: var(--teal-color);
-  color: #fff;
-}
-
-main > .section.teal h1,
-main > .section.teal h2,
-main > .section.teal a:any-link {
-  color: #fff;
-}
-
-main > .section.teal h2 em {
-  color: #fff;
-}
-
-main > .section.band {
-  padding: 36px 0;
-}
-
 main > .section.band h4 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--navy-color);
+  letter-spacing: 0.12em;
 }
 
 main > .section.band p {
   margin: 0;
   padding-left: 24px;
   border-left: 1px solid #c5c6c7;
-  color: var(--navy-color);
-  font-size: 12px;
 }
 
-main > .section.contact h1 em,
-main > .section.contact h2 em {
-  display: inline;
-  color: var(--gold-color);
+/* heading panel left, stats right */
+main > .section.split {
+  padding: 50px 0;
 }
 
-main > .section.contact .columns > div {
-  align-items: flex-start;
-}
-
-main > .section.contact p {
-  margin: 0 0 12px;
-  font-size: 12px;
-}
-
-main > .section.contact a:any-link {
-  color: var(--navy-color);
-  text-decoration: underline;
-}
-
-/* two-column splits: heading panel left, stats right */
-@media (width >= 900px) {
+@media (width >= 981px) {
   main > .section.split {
-    padding: 0;
     display: grid;
-    grid-template-columns: 40% 60%;
-    background: linear-gradient(90deg, var(--light-color) 40%, #fff 40%);
+    grid-template-columns: 576px 1fr;
+    background: linear-gradient(90deg, var(--light-color) 576px, #fff 576px);
   }
 
   main > .section.split.navy {
     background: var(--navy-color);
   }
 
-  main > .section.split > div {
+  main > .section.split > div:first-child {
     max-width: none;
-    margin: 0;
-    padding: 64px 48px;
+    padding: 0 80px 0 max(60px, calc((100vw - 1440px) / 2 + 60px));
+  }
+
+  main > .section.split > div:last-child {
+    max-width: none;
+    margin: 70px 0 0;
+    padding: 0 60px 0 40px;
   }
 }
 
-main > .section.statement h2 {
-  font-size: var(--heading-font-size-xl);
+/* contact blocks */
+main > .section.contact {
+  padding: 60px 0;
 }
 
-main > .section.statement h2 em {
+main > .section.contact h1,
+main > .section.contact h2 {
+  font-size: clamp(48px, 6.4vw, 92px);
+  line-height: 0.95;
+}
+
+main > .section.contact h2 em {
   display: inline;
+  color: var(--gold-color);
+  font-size: 1em;
+}
+
+main > .section.contact a:any-link {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+main > .section.contact strong {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
