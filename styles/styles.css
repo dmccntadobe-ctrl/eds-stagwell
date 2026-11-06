@@ -472,6 +472,11 @@ main > .section.navy h2 em {
   color: var(--gold-color);
 }
 
+main > .section.navy a.button,
+main > .section.teal a.button {
+  color: #fff;
+}
+
 main > .section.teal {
   background: var(--teal-color);
   color: #fff;
