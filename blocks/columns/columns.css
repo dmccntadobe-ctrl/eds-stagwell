@@ -85,17 +85,17 @@
     align-items: center;
   }
 
-  /* single-row contact (heading left, details right) */
-  .columns.contact.single > div {
-    grid-template-columns: 786px 1fr;
-  }
-
   /* contact: heading + intro, then detail groups */
   .columns.contact > div {
     display: grid;
     grid-template-columns: 786px 178px 1fr;
     gap: 0;
     align-items: start;
+  }
+
+  /* single-row contact (heading left, details right) */
+  .columns.contact.single > div {
+    grid-template-columns: 786px 1fr;
   }
 
   .columns.highlights > div > div:last-child {
