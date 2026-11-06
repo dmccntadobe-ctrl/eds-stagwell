@@ -5,8 +5,9 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
+  padding: 96px 24px 120px;
   min-height: 300px;
+  background: linear-gradient(135deg, var(--navy-color) 60%, #005a7a);
 }
 
 .hero h1 {
@@ -14,6 +15,19 @@
   margin-left: auto;
   margin-right: auto;
   color: var(--background-color);
+  font-size: clamp(44px, 8vw, 92px);
+  line-height: 0.95;
+}
+
+.hero p {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--background-color);
+}
+
+.hero a:any-link:not(.button) {
+  color: var(--gold-color);
 }
 
 .hero picture {

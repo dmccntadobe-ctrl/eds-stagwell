@@ -1,5 +1,6 @@
 footer {
   background-color: var(--light-color);
+  border-top: 4px solid var(--gold-color);
   font-size: var(--body-font-size-xs);
 }
 
@@ -17,4 +18,14 @@ footer .footer p {
   footer .footer > div {
     padding: 40px 32px 24px;
   }
+}
+
+footer .footer img {
+  width: 160px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+footer .footer a:any-link {
+  color: var(--navy-color);
 }
