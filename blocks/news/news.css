@@ -48,9 +48,15 @@
   text-decoration: underline;
 }
 
-@media (width >= 981px) {
+@media (width >= 768px) {
   .news ul {
     grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (width >= 981px) {
+  .news ul {
     gap: 40px;
   }
 }

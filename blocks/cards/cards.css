@@ -10,7 +10,6 @@
 .cards > ul > li {
   display: flex;
   flex-direction: column;
-  max-width: 258px;
 }
 
 .cards .cards-card-body {
@@ -39,9 +38,17 @@
 
 .cards > ul > li img {
   width: 100%;
+  max-width: 258px;
   height: auto;
   aspect-ratio: 346 / 200;
   object-fit: cover;
+}
+
+@media (width >= 768px) {
+  .cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+  }
 }
 
 @media (width >= 981px) {

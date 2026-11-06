@@ -42,10 +42,17 @@
   --heading-font-size-xs: 14px;
 
   /* nav height */
-  --nav-height: 71px;
+  --nav-height: 56px;
 
   /* page gutter: 60px of content padding, centred above 1440px */
   --page-padding: 20px;
+  --section-pad: 40px;
+  --intro-pad: 32px 0 56px;
+  --sky-pad: 32px 0 56px;
+  --contact-pad: 40px;
+  --newsletter-pad: 48px;
+  --outsider-pad: 64px;
+  --highlights-pad: 32px 0 56px;
   --page-gutter: var(--page-padding);
 }
 
@@ -302,7 +309,7 @@ main img {
 /* sections */
 main > .section {
   margin: 0;
-  padding: 50px 0;
+  padding: var(--section-pad) 0;
 }
 
 main > .section > div {
@@ -324,6 +331,14 @@ main > .section > div {
 @media (width >= 981px) {
   :root {
     --page-padding: 60px;
+    --nav-height: 71px;
+    --section-pad: 50px;
+    --intro-pad: 70px 0 200px;
+    --sky-pad: 130px 0 20px;
+    --contact-pad: 60px;
+    --newsletter-pad: 60px;
+    --outsider-pad: 80px;
+    --highlights-pad: 70px 0 50px;
     --page-gutter: max(60px, calc((100vw - 1440px) / 2 + 60px));
   }
 }
@@ -338,7 +353,7 @@ main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 50px 0;
+  padding: var(--section-pad) 0;
 }
 
 /* ===== Stagwell look and feel (values measured from stagwellglobal.com at 1440px) ===== */
@@ -441,7 +456,7 @@ main > .section.navy h2 em {
 }
 
 main > .section.teal {
-  padding: 60px 0;
+  padding: var(--newsletter-pad) 0;
   background: var(--teal-color);
   color: var(--light-color);
 }
@@ -460,7 +475,7 @@ main > .section.teal a.button {
 
 /* page intro band (about, network) */
 main > .section.intro {
-  padding: 70px 0 200px;
+  padding: var(--intro-pad);
   background: var(--light-color);
 }
 
@@ -475,7 +490,7 @@ main > .section.intro p {
 
 /* meet mark top band */
 main > .section.sky {
-  padding: 130px 0 20px;
+  padding: var(--sky-pad);
   background: linear-gradient(180deg, #9bd7e6 0%, var(--light-color) 100%);
 }
 
@@ -546,7 +561,7 @@ main > .section.band p {
 
 /* heading panel left, stats right */
 main > .section.split {
-  padding: 50px 0;
+  padding: var(--section-pad) 0;
 }
 
 @media (width >= 981px) {
@@ -584,7 +599,7 @@ main > .section.split {
 
 /* contact blocks */
 main > .section.contact {
-  padding: 60px 0;
+  padding: var(--contact-pad) 0;
 }
 
 main > .section.contact h1,
@@ -613,11 +628,11 @@ main > .section.contact strong {
 }
 
 main > .section.teal:has(.columns.outsider) {
-  padding: 80px 0;
+  padding: var(--outsider-pad) 0;
 }
 
 main > .section.light:has(.columns.highlights) {
-  padding: 70px 0 50px;
+  padding: var(--highlights-pad);
 }
 
 main > .section.teal h2,
