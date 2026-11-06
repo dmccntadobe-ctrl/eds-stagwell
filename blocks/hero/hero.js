@@ -1,8 +1,9 @@
 /**
  * Stagwell home hero.
- * Row 1: [logo image | link paragraph + h1]. The video stage below plays the linked
- * <video> (or a link to an .mp4 that is publicly reachable) if present, otherwise it links
- * to the call-to-action.
+ * Row 1: [logo image | link paragraph + h1]. The stage below plays a <video> (or a link to a
+ * publicly reachable .mp4) if present, otherwise it shows the tagline with a play button that
+ * opens the linked call-to-action.
+ * @param {Element} block The block element
  */
 export default function decorate(block) {
   const row = block.firstElementChild;
@@ -20,8 +21,8 @@ export default function decorate(block) {
 
   const stage = document.createElement('div');
   stage.className = 'hero-stage';
-  const callLink = textCell?.querySelector('a:not([href$=".mp4"])');
-  const videoLink = top.querySelector('a[href$=".mp4"]');
+  const callLink = textCell?.querySelector('a:not([href*=".mp4"])');
+  const videoLink = top.querySelector('a[href*=".mp4"]');
   let video = top.querySelector('video');
   if (!video && videoLink) {
     video = document.createElement('video');
@@ -32,17 +33,24 @@ export default function decorate(block) {
     video.controls = true;
     video.playsInline = true;
     video.preload = 'metadata';
+    video.setAttribute('aria-label', 'Stagwell brand video');
     stage.append(video);
   } else {
     const tag = document.createElement('p');
     tag.className = 'hero-tagline';
-    tag.innerHTML = 'That’s why the world’s<br>most <strong>ambitious</strong> brands choose us';
+    tag.append('That’s why the world’s');
+    tag.append(document.createElement('br'));
+    tag.append('most ');
+    const strong = document.createElement('strong');
+    strong.textContent = 'ambitious';
+    tag.append(strong, ' brands choose us');
     stage.append(tag);
     if (callLink) {
       const play = document.createElement('a');
       play.className = 'hero-play';
       play.href = callLink.href;
-      play.setAttribute('aria-label', 'Watch Stagwell’s earnings call');
+      play.setAttribute('aria-label', callLink.closest('p')?.textContent.trim() || 'Watch the video');
+      play.tabIndex = -1;
       stage.append(play);
     }
   }

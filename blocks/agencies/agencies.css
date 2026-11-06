@@ -1,19 +1,25 @@
 .agencies .agencies-tabs {
   display: flex;
   flex-wrap: wrap;
+  padding-left: var(--page-gutter);
 }
 
 .agencies .agencies-tabs button {
   border: 0;
   border-radius: 0;
-  padding: 18px 28px;
+  padding: 22px 34px;
   background: transparent;
   color: var(--navy-color);
-  font-size: 11px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.15px;
+  line-height: 23.25px;
+  cursor: pointer;
 }
 
-.agencies .agencies-tabs button b {
+.agencies .agencies-tabs .agencies-num {
   margin-right: 8px;
+  font-weight: 700;
 }
 
 .agencies .agencies-tabs button[aria-selected='true'] {
@@ -21,23 +27,26 @@
 }
 
 .agencies .agencies-panels {
-  padding: 32px 24px 24px;
+  padding: 20px var(--page-gutter) 30px;
   background: var(--navy-color);
-  color: #fff;
+  color: var(--light-color);
 }
 
 .agencies .agencies-panels ul {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .agencies .agencies-panels li {
-  padding: 22px 0;
-  border-bottom: 1px solid rgb(255 255 255 / 30%);
-  font-size: 11px;
+  padding: 15px 0;
+  line-height: 58px;
+  border-bottom: 1px solid rgb(245 247 246 / 40%);
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  overflow-wrap: anywhere;
 }
 
 .agencies .agencies-panels li[hidden],
@@ -46,7 +55,16 @@
 }
 
 .agencies .agencies-panels a:any-link {
-  color: #fff;
+  color: var(--light-color);
+}
+
+.agencies .agencies-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .agencies .agencies-more {
@@ -57,30 +75,33 @@
   border: 0;
   padding: 0;
   background: transparent;
-  color: #fff;
-  font-size: 10px;
+  color: var(--light-color);
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .agencies .agencies-more span {
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--teal-color);
-  font-size: 14px;
+  font-size: 16px;
 }
 
-@media (width >= 900px) {
-  .agencies .agencies-panels {
-    padding: 40px 32px 24px;
-  }
-
+@media (width >= 600px) {
   .agencies .agencies-panels ul {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+  }
+}
+
+@media (width >= 981px) {
+  .agencies .agencies-panels ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
