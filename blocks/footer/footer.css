@@ -3,7 +3,7 @@ footer {
   font-size: 13px;
 }
 
-footer .footer > div {
+footer .footer .default-content-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
@@ -70,7 +70,7 @@ footer .footer p:nth-child(3) a {
 }
 
 @media (width >= 981px) {
-  footer .footer > div {
+  footer .footer .default-content-wrapper {
     grid-template:
       'logo logo' auto
       'socials socials' 1fr

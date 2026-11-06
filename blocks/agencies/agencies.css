@@ -1,6 +1,7 @@
 .agencies .agencies-tabs {
   display: flex;
   flex-wrap: wrap;
+  padding-left: var(--page-gutter);
 }
 
 .agencies .agencies-tabs button {
@@ -26,7 +27,7 @@
 }
 
 .agencies .agencies-panels {
-  padding: 20px 24px 30px;
+  padding: 20px var(--page-gutter) 30px;
   background: var(--navy-color);
   color: var(--light-color);
 }
@@ -94,15 +95,11 @@
 @media (width >= 600px) {
   .agencies .agencies-panels ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 30px;
+    column-gap: 0;
   }
 }
 
 @media (width >= 981px) {
-  .agencies .agencies-panels {
-    padding: 20px max(60px, calc((100vw - 1440px) / 2 + 60px)) 30px;
-  }
-
   .agencies .agencies-panels ul {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }

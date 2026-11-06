@@ -85,6 +85,11 @@
     align-items: center;
   }
 
+  /* single-row contact (heading left, details right) */
+  .columns.contact.single > div {
+    grid-template-columns: 786px 1fr;
+  }
+
   /* contact: heading + intro, then detail groups */
   .columns.contact > div {
     display: grid;

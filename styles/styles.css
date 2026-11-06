@@ -43,6 +43,9 @@
 
   /* nav height */
   --nav-height: 71px;
+
+  /* page gutter: 60px of content padding, centred above 1440px */
+  --page-gutter: 24px;
 }
 
 /* fallback fonts */
@@ -299,15 +302,25 @@ main > .section {
 }
 
 main > .section > div {
+  box-sizing: border-box;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 @media (width >= 981px) {
+  :root {
+    --page-gutter: max(60px, calc((100vw - 1440px) / 2 + 60px));
+  }
+
   main > .section > div {
     padding: 0 60px;
   }
+}
+
+main > .section > .agencies-wrapper {
+  max-width: none;
+  padding: 0;
 }
 
 /* section metadata */
@@ -569,4 +582,13 @@ main > .section.teal:has(.columns.outsider) {
 
 main > .section.light:has(.columns.highlights) {
   padding: 70px 0 50px;
+}
+
+main > .section.teal h2,
+main > .section.contact h2 {
+  letter-spacing: 0;
+}
+
+main > .section.teal p {
+  font-weight: 300;
 }
