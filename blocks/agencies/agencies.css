@@ -1,37 +1,86 @@
 .agencies .agencies-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
 }
 
 .agencies .agencies-tabs button {
-  background: transparent;
-  color: var(--text-color);
-  border: 2px solid var(--text-color);
+  border: 0;
   border-radius: 0;
-  padding: 8px 16px;
+  padding: 18px 28px;
+  background: transparent;
+  color: var(--navy-color);
+  font-size: 11px;
+}
+
+.agencies .agencies-tabs button b {
+  margin-right: 8px;
 }
 
 .agencies .agencies-tabs button[aria-selected='true'] {
-  background: var(--text-color);
-  color: var(--background-color);
+  background: var(--gold-color);
 }
 
-.agencies ul {
+.agencies .agencies-panels {
+  padding: 32px 24px 24px;
+  background: var(--navy-color);
+  color: #fff;
+}
+
+.agencies .agencies-panels ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px 24px;
+  grid-template-columns: repeat(2, 1fr);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.agencies ul[hidden] {
+.agencies .agencies-panels li {
+  padding: 22px 0;
+  border-bottom: 1px solid rgb(255 255 255 / 30%);
+  font-size: 11px;
+}
+
+.agencies .agencies-panels li[hidden],
+.agencies .agencies-panels [role='tabpanel'][hidden] {
   display: none;
 }
 
-.agencies li a {
-  color: inherit;
-  font-weight: 500;
+.agencies .agencies-panels a:any-link {
+  color: #fff;
+}
+
+.agencies .agencies-more {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 0 auto;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agencies .agencies-more span {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-color);
+  font-size: 14px;
+}
+
+@media (width >= 900px) {
+  .agencies .agencies-panels {
+    padding: 40px 32px 24px;
+  }
+
+  .agencies .agencies-panels ul {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+  }
 }

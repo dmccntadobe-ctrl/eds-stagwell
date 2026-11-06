@@ -15,6 +15,8 @@
   --background-color: #fff;
   --light-color: #f5f7f6;
   --navy-color: #003349;
+  --teal-color: #009cbd;
+  --serif-font-family: spectral, georgia, 'Times New Roman', serif;
   --gold-color: #ffb81c;
   --dark-color: #666;
   --text-color: #333;
@@ -196,21 +198,18 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--gold-color);
-  background-color: var(--gold-color);
+  border-color: transparent;
+  background-color: transparent;
   color: var(--navy-color);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--navy-color);
-  background-color: var(--navy-color);
-  color: var(--background-color);
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--link-hover-color);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -324,31 +323,235 @@ main .section.highlight {
   padding: 40px 0;
 }
 
-/* Stagwell section treatments */
-main > .section:has(.stats) {
-  margin: 0;
-  padding: 64px 0;
-  background-color: var(--navy-color);
-  color: var(--background-color);
+/* ===== Stagwell look and feel ===== */
+@media (width >= 900px) {
+  :root {
+    --heading-font-size-xxl: 88px;
+    --heading-font-size-xl: 52px;
+    --body-font-size-m: 14px;
+    --body-font-size-s: 13px;
+  }
 }
 
-main > .section:has(.stats) a:any-link:not(.button) {
-  color: var(--gold-color);
+h1 em,
+h2 em,
+h3 em {
+  display: block;
+  color: var(--teal-color);
+  font-family: var(--serif-font-family);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-main > .section:has(.cards),
-main > .section:has(.people) {
-  margin: 0;
-  padding: 56px 0;
-  background-color: var(--light-color);
-}
-
-main h1,
-main h2 {
+h1,
+h2 {
+  margin-top: 0;
+  line-height: 1;
   color: var(--navy-color);
 }
 
-main > .section:has(.stats) h2,
-main > .section:has(.stats) h1 {
-  color: var(--background-color);
+/* stylelint-disable no-descending-specificity */
+
+/* CTA links: small caps text with a teal arrow circle */
+a.button.primary,
+a.button.secondary {
+  gap: 12px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--navy-color);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  overflow: visible;
+}
+
+a.button.primary::after,
+a.button.secondary::after {
+  content: '→';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-color);
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+a.button.primary:hover::after {
+  background: var(--navy-color);
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* sections (set through Section Metadata "Style") */
+main > .section.full > div {
+  max-width: none;
+  padding: 0;
+}
+
+main > .section.intro,
+main > .section.light,
+main > .section.band,
+main > .section.statement,
+main > .section.navy,
+main > .section.teal,
+main > .section.sky,
+main > .section.split {
+  margin: 0;
+  padding: 56px 0;
+}
+
+main > .section.intro {
+  min-height: 340px;
+  padding: 72px 0 120px;
+  background: var(--light-color);
+}
+
+main > .section.intro h1 {
+  font-size: var(--heading-font-size-xxl);
+}
+
+main > .section.intro h1 em {
+  color: var(--gold-color);
+}
+
+main > .section.intro p {
+  max-width: 340px;
+  color: var(--navy-color);
+  font-size: 12px;
+}
+
+main > .section.sky {
+  background: linear-gradient(180deg, #8fd3e4 0%, #fff 100%);
+  padding-bottom: 72px;
+}
+
+main > .section.sky h1 em {
+  color: var(--navy-color);
+}
+
+main > .section.sky h3 {
+  margin: 4px 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+main > .section.sky h4 {
+  color: var(--navy-color);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+main > .section.light,
+main > .section.band {
+  background: var(--light-color);
+}
+
+main > .section.navy {
+  background: var(--navy-color);
+  color: #fff;
+}
+
+main > .section.navy h1,
+main > .section.navy h2 {
+  color: #fff;
+}
+
+main > .section.navy h2 em {
+  color: var(--gold-color);
+}
+
+main > .section.teal {
+  background: var(--teal-color);
+  color: #fff;
+}
+
+main > .section.teal h1,
+main > .section.teal h2,
+main > .section.teal a:any-link {
+  color: #fff;
+}
+
+main > .section.teal h2 em {
+  color: #fff;
+}
+
+main > .section.band {
+  padding: 36px 0;
+}
+
+main > .section.band h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-color);
+}
+
+main > .section.band p {
+  margin: 0;
+  padding-left: 24px;
+  border-left: 1px solid #c5c6c7;
+  color: var(--navy-color);
+  font-size: 12px;
+}
+
+main > .section.contact h1 em,
+main > .section.contact h2 em {
+  display: inline;
+  color: var(--gold-color);
+}
+
+main > .section.contact .columns > div {
+  align-items: flex-start;
+}
+
+main > .section.contact p {
+  margin: 0 0 12px;
+  font-size: 12px;
+}
+
+main > .section.contact a:any-link {
+  color: var(--navy-color);
+  text-decoration: underline;
+}
+
+/* two-column splits: heading panel left, stats right */
+@media (width >= 900px) {
+  main > .section.split {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background: linear-gradient(90deg, var(--light-color) 40%, #fff 40%);
+  }
+
+  main > .section.split.navy {
+    background: var(--navy-color);
+  }
+
+  main > .section.split > div {
+    max-width: none;
+    margin: 0;
+    padding: 64px 48px;
+  }
+}
+
+main > .section.statement h2 {
+  font-size: var(--heading-font-size-xl);
+}
+
+main > .section.statement h2 em {
+  display: inline;
 }

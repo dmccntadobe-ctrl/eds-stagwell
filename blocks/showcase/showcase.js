@@ -1,6 +1,9 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-/** First row = intro (heading, text, list); remaining rows = slides (text | image). */
+/**
+ * Capabilities / points-of-view slider.
+ * Row 1 = intro (heading, text, bullet list). Remaining rows = slides: [title + text | image].
+ */
 export default function decorate(block) {
   const [introRow, ...slideRows] = [...block.children];
   const intro = document.createElement('div');
@@ -27,20 +30,33 @@ export default function decorate(block) {
     }
     track.append(li);
   });
+  const slides = [...track.children];
+  let current = 0;
+
+  const counter = document.createElement('span');
+  counter.className = 'showcase-count';
+
+  const goTo = (n) => {
+    current = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    counter.innerHTML = `<strong>${String(current + 1).padStart(2, '0')}</strong> | ${String(slides.length).padStart(2, '0')}`;
+    track.scrollTo({ left: slides[current].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+  };
 
   const nav = document.createElement('div');
   nav.className = 'showcase-nav';
-  ['prev', 'next'].forEach((dir) => {
+  nav.append(counter);
+  [['prev', '←', -1], ['next', '→', 1]].forEach(([name, label, step]) => {
     const b = document.createElement('button');
     b.type = 'button';
-    b.setAttribute('aria-label', dir === 'prev' ? 'Previous slide' : 'Next slide');
-    b.textContent = dir === 'prev' ? '←' : '→';
-    b.addEventListener('click', () => {
-      const step = track.firstElementChild?.offsetWidth || 300;
-      track.scrollBy({ left: dir === 'prev' ? -step : step, behavior: 'smooth' });
-    });
+    b.setAttribute('aria-label', name === 'prev' ? 'Previous slide' : 'Next slide');
+    b.textContent = label;
+    b.addEventListener('click', () => goTo(current + step));
     nav.append(b);
   });
+  slides.forEach((s, i) => s.addEventListener('click', () => goTo(i)));
   intro.append(nav);
   block.replaceChildren(intro, track);
+  slides[0]?.classList.add('active');
+  counter.innerHTML = `<strong>01</strong> | ${String(slides.length).padStart(2, '0')}`;
 }
