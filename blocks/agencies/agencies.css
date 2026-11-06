@@ -1,0 +1,37 @@
+.agencies .agencies-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.agencies .agencies-tabs button {
+  background: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 0;
+  padding: 8px 16px;
+}
+
+.agencies .agencies-tabs button[aria-selected='true'] {
+  background: var(--text-color);
+  color: var(--background-color);
+}
+
+.agencies ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.agencies ul[hidden] {
+  display: none;
+}
+
+.agencies li a {
+  color: inherit;
+  font-weight: 500;
+}

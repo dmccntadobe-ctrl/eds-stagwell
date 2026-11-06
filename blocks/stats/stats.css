@@ -1,0 +1,30 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.stats .stats-item {
+  display: block;
+}
+
+.stats .stats-number p {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.1;
+}
+
+.stats .stats-label p {
+  margin: 4px 0 0;
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (width >= 900px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
