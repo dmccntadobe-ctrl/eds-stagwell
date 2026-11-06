@@ -559,31 +559,39 @@ main > .section.band p {
   border-left: 1px solid #c5c6c7;
 }
 
-/* heading panel left, stats right */
+/* heading panel (light) with stats: stacked below 1329px, two columns above */
 main > .section.split {
-  padding: var(--section-pad) 0;
+  padding: 0;
 }
 
-@media (width >= 981px) {
+main > .section.split > div:first-child {
+  max-width: none;
+  padding: var(--section-pad) var(--page-padding);
+  background: var(--light-color);
+}
+
+main > .section.split > div:last-child {
+  max-width: none;
+  padding: var(--section-pad) var(--page-padding);
+}
+
+
+main > .section.split.navy > div:first-child {
+  background: transparent;
+}
+
+@media (width >= 1329px) {
   main > .section.split {
     display: grid;
-    grid-template-columns: 576px 1fr;
-    background: linear-gradient(90deg, var(--light-color) 576px, #fff 576px);
-  }
-
-  main > .section.split.navy {
-    background: var(--navy-color);
+    grid-template-columns: calc(var(--page-gutter) + 516px) 1fr;
   }
 
   main > .section.split > div:first-child {
-    max-width: none;
-    padding: 0 80px 0 max(60px, calc((100vw - 1440px) / 2 + 60px));
+    padding: var(--section-pad) 80px var(--section-pad) var(--page-gutter);
   }
 
   main > .section.split > div:last-child {
-    max-width: none;
-    margin: 90px 0 0;
-    padding: 0 60px 0 40px;
+    padding: calc(var(--section-pad) + 70px) 60px var(--section-pad) 40px;
   }
 
   main > .section.split > div:first-child .default-content-wrapper {
@@ -594,6 +602,7 @@ main > .section.split {
 
   main > .section.split > div:first-child h2 + p {
     margin-top: auto;
+    padding-top: 40px;
   }
 }
 

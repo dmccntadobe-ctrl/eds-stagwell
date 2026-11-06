@@ -13,10 +13,8 @@ footer .footer .default-content-wrapper {
     'copy';
   gap: 24px;
   box-sizing: border-box;
-  max-width: 1440px;
   min-height: 455px;
-  margin: 0 auto;
-  padding: 40px 24px 30px;
+  padding: 40px var(--page-gutter) 30px;
 }
 
 footer .footer p {
@@ -75,6 +73,6 @@ footer .footer p:nth-child(3) a {
       'logo logo' auto
       'socials socials' 1fr
       'copy links' auto / 1fr auto;
-    padding: 40px max(60px, calc((100vw - 1440px) / 2 + 60px));
+    padding: 40px var(--page-gutter);
   }
 }
