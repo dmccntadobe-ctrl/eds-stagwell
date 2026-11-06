@@ -19,11 +19,13 @@ export default function decorate(block) {
 
   const stage = document.createElement('div');
   stage.className = 'hero-stage';
+  const videoLink = top.querySelector('a[href$=".mp4"]');
+  const videoSrc = videoLink?.href;
+  videoLink?.closest('p')?.remove();
   const callLink = textCell?.querySelector('a');
-  const videoLink = block.querySelector('a[href$=".mp4"]');
-  if (videoLink) {
+  if (videoSrc) {
     const video = document.createElement('video');
-    video.src = videoLink.href;
+    video.src = videoSrc;
     video.controls = true;
     video.playsInline = true;
     video.preload = 'metadata';
