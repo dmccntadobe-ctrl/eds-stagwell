@@ -564,6 +564,10 @@ main > .section.split {
   padding: 0;
 }
 
+main > .section.split > div {
+  margin: 0;
+}
+
 main > .section.split > div:first-child {
   max-width: none;
   padding: var(--section-pad) var(--page-padding);
