@@ -4,7 +4,7 @@ Written at the end of the first build phase. It covers what exists, how it was b
 
 ## 1. Status in one paragraph
 
-Four pages of stagwellglobal.com (Home, About Us, Our Network, Meet Mark) plus the header and footer are migrated into DA and previewed on `main`. The code (blocks, styles, scripts) is merged to `main`. The design was matched to the original by measuring its computed styles at 1440, 768 and 390px; desktop is close, tablet and mobile are closer but pages are still taller than the original. **Nothing has been published to the live site (`.aem.live`).** Several data-dependent features of the original (network map and filters, the full agency list, the hero video, newsletter submission) are not built because the data or service was not available. See section 8.
+Four pages of stagwellglobal.com (Home, About Us, Our Network, Meet Mark) plus the header and footer are migrated into DA and previewed on `main`. The code (blocks, styles, scripts) is merged to `main`. The design was matched to the original by measuring its computed styles at 1440, 768 and 390px; desktop is close, tablet and mobile are closer but pages are still taller than the original. **The six pages were published to the live site (`.aem.live`) manually on 2026-11-06.** Several data-dependent features of the original (network map and filters, the full agency list, the hero video, newsletter submission) are not built because the data or service was not available. See section 8.
 
 ## 2. Where things live
 
@@ -13,7 +13,7 @@ Four pages of stagwellglobal.com (Home, About Us, Our Network, Meet Mark) plus t
 | Code repository | https://github.com/dmccntadobe-ctrl/eds-stagwell (default branch `main`) |
 | Authoring (DA) | https://da.live/#/dmccntadobe-ctrl/eds-stagwell |
 | Preview | https://main--eds-stagwell--dmccntadobe-ctrl.aem.page/ |
-| Live (not yet published) | https://main--eds-stagwell--dmccntadobe-ctrl.aem.live/ |
+| Live (published) | https://main--eds-stagwell--dmccntadobe-ctrl.aem.live/ |
 | Content in DA | `index`, `about-us`, `our-network`, `meetmark`, `nav`, `footer` |
 | Images in DA | `media/stagwell/<hash>.<ext>` (about 50 files). Pages reference them as `https://content.da.live/dmccntadobe-ctrl/eds-stagwell/media/stagwell/<file>`; EDS pulls them into the media bus at preview time. |
 | Hero video in DA | `media/stagwell/stagwell-hero.mp4` (17.7 MB, compressed from 48 MB). **Not referenced by any page**, see section 8. |
@@ -83,7 +83,7 @@ Caveats:
 1. Branch from `main`. Branch names without slashes.
 2. `npm run lint` must pass (CI runs it on every push). Working copies on Windows may show CRLF noise; `.gitattributes` forces LF in the repository.
 3. Open a PR with preview links for the affected pages (AGENTS.md requires it).
-4. Merge to `main` ships the code. Content is separate: edit in DA, then preview and publish (Sidekick, or `admin.hlx.page` preview and live endpoints).
+4. Merge to `main` ships the code to **both** preview and live, so a merge changes the public site immediately. Content is separate: edit in DA, then preview and publish (Sidekick, or `admin.hlx.page` preview and live endpoints); publishing a page does not need a code change.
 5. A code change that needs new block names or section styles in content must be merged before the content that uses it is previewed on `main`, otherwise `main` shows unstyled content.
 
 ### Pull request history
@@ -115,7 +115,8 @@ Not verified:
 - No screen reader testing; accessibility was checked by code review and the automated checks above.
 - No Lighthouse or Core Web Vitals run.
 - About Us showed a one-off 80px sideways overflow at 1024px in the audit that did not reproduce when checked directly.
-- The home page overflows by about 6px at exactly 1000px wide on `main` (found after the last merge, not fixed).
+- The home page overflows by about 6px at exactly 1000px wide on `main` and on live (found after the last merge, not fixed).
+- After publishing, the live pages were checked for status codes, broken image markers, expected blocks and sideways scrolling across widths; they were not re-reviewed visually.
 - Tablet (768px) and mobile (390px) pages were compared by measurement but only the home page was reviewed visually at mobile width.
 
 ## 7. Differences from the original that are known and accepted
@@ -135,7 +136,7 @@ Not verified:
 | Newsletter | The sign-up endpoint (the original posted to its WordPress Gravity Form). Place its `https` URL as a link in the newsletter block. Consider a spam check. |
 | Latest News | Needs a data source (for example a DA spreadsheet or `query-index.json`) instead of the static three cards. |
 | Mega-menu dropdowns | Design decision; current dropdown is functional but plain. |
-| Publishing | Publish the six pages to live once the above is accepted. |
+| Re-publishing | Pages were published before the open items above were closed. After each content edit in DA, publish the page again; the live pages show a disabled newsletter form, a hero without the video, and 20 agencies until the items above are done. |
 | Mobile and tablet heights | Further tuning of the showcase, stats and people sections to reduce page length. |
 
 Accessibility items from the code review that are not done: `aria-expanded` and `aria-controls` on the hamburger and dropdown buttons, arrow-key and outside-click handling for the dropdowns, the 24px minimum size for the hamburger target, a `form-action`/`connect-src` Content-Security-Policy, and clearing 9 dev-dependency audit warnings (`npm audit` reports none in production dependencies). `.github/workflows/main.yaml` is titled "Node.js 20" but runs Node 24, and its action versions were not verified.
@@ -152,7 +153,7 @@ Accessibility items from the code review that are not done: `aria-expanded` and 
 
 ## 10. Suggested next steps
 
-1. Decide the open items in section 8, starting with the agency data and newsletter endpoint.
+1. Decide the open items in section 8, starting with the agency data and newsletter endpoint. The newsletter form on the live site currently cannot submit.
 2. Fix the 6px overflow at 1000px and re-run the audits on all pages.
 3. Review Network and Meet Mark visually at tablet and mobile widths.
 4. Run Lighthouse on the four pages and fix anything below 90.

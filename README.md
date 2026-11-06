@@ -9,7 +9,7 @@ For the full project history, decisions, open items and operating instructions, 
 | | URL |
 |---|---|
 | Preview | https://main--eds-stagwell--dmccntadobe-ctrl.aem.page/ |
-| Live | https://main--eds-stagwell--dmccntadobe-ctrl.aem.live/ |
+| Live (published) | https://main--eds-stagwell--dmccntadobe-ctrl.aem.live/ |
 | Authoring (DA) | https://da.live/#/dmccntadobe-ctrl/eds-stagwell |
 | Code | https://github.com/dmccntadobe-ctrl/eds-stagwell |
 
@@ -66,7 +66,7 @@ npx -y @adobe/aem-cli up --no-open   # local code against previewed content
 
 Rules for this repository are in [AGENTS.md](./AGENTS.md). In short: do not edit `scripts/aem.js`, scope CSS to the block name, keep `fragment/fragment.js` as the only cross-block import, and use `.hlxignore` for files that must not be served.
 
-Pull requests must include preview links in the form `https://{branch}--eds-stagwell--dmccntadobe-ctrl.aem.page/{path}` for the affected pages.
+Merging to `main` deploys to both preview and live. Pull requests must include preview links in the form `https://{branch}--eds-stagwell--dmccntadobe-ctrl.aem.page/{path}` for the affected pages.
 
 ## Tools
 
