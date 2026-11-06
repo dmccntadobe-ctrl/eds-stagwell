@@ -53,6 +53,9 @@
 @font-face {
   font-family: montserrat-fallback;
   size-adjust: 112%;
+  ascent-override: 86%;
+  descent-override: 22%;
+  line-gap-override: 0%;
   src: local('Arial');
 }
 
