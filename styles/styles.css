@@ -29,13 +29,13 @@
   --heading-font-family: montserrat, montserrat-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 15px;
+  --body-font-size-m: 13px;
   --body-font-size-s: 14px;
   --body-font-size-xs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: clamp(48px, 6.4vw, 92px);
-  --heading-font-size-xl: clamp(36px, 3.9vw, 56px);
+  --heading-font-size-xxl: 52px;
+  --heading-font-size-xl: 36px;
   --heading-font-size-l: 24px;
   --heading-font-size-m: 24px;
   --heading-font-size-s: 14px;
@@ -45,7 +45,8 @@
   --nav-height: 71px;
 
   /* page gutter: 60px of content padding, centred above 1440px */
-  --page-gutter: 24px;
+  --page-padding: 20px;
+  --page-gutter: var(--page-padding);
 }
 
 /* fallback fonts */
@@ -305,16 +306,22 @@ main > .section > div {
   box-sizing: border-box;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--page-padding);
+}
+
+@media (width >= 768px) {
+  :root {
+    --page-padding: 48px;
+    --body-font-size-m: 15px;
+    --heading-font-size-xxl: 92px;
+    --heading-font-size-xl: 56px;
+  }
 }
 
 @media (width >= 981px) {
   :root {
+    --page-padding: 60px;
     --page-gutter: max(60px, calc((100vw - 1440px) / 2 + 60px));
-  }
-
-  main > .section > div {
-    padding: 0 60px;
   }
 }
 
@@ -493,17 +500,30 @@ main > .section.statement > div {
 }
 
 main > .section.statement h2 {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  font-size: 50px;
-  line-height: 0.8;
+  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 1;
 }
 
 main > .section.statement h2 em {
-  display: inline;
-  font-size: 1em;
+  font-size: 1.125em;
   letter-spacing: normal;
+}
+
+@media (width >= 981px) {
+  main > .section.statement h2 {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 0;
+    font-size: 50px;
+    line-height: 0.8;
+  }
+
+  main > .section.statement h2 em {
+    display: inline;
+    font-size: 1em;
+  }
 }
 
 /* about "Accelerating Change" band */

@@ -10,15 +10,18 @@ main > .section.hero-container {
 .hero {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--page-padding);
 }
 
 .hero .hero-top {
   display: grid;
   gap: 24px;
   align-items: end;
-  min-height: 234px;
-  padding: 24px 0 20px;
+  padding: 24px 0 16px;
+}
+
+.hero .hero-logo {
+  display: none;
 }
 
 .hero .hero-logo img {
@@ -56,7 +59,7 @@ main > .section.hero-container {
 .hero .hero-text h1 {
   padding-left: 20px;
   border-left: 1px solid #c5c6c7;
-  font-size: clamp(36px, 3.34vw, 48px);
+  font-size: 36px;
   letter-spacing: 0.01em;
   line-height: 0.9;
 }
@@ -123,8 +126,17 @@ main > .section.hero-container {
     padding: 0 60px;
   }
 
+  .hero .hero-logo {
+    display: block;
+  }
+
+  .hero .hero-text h1 {
+    font-size: 48px;
+  }
+
   .hero .hero-top {
     grid-template-columns: 1fr 401px;
+    min-height: 234px;
     padding-top: 0;
   }
 

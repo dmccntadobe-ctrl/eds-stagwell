@@ -5,7 +5,7 @@
 }
 
 .showcase .showcase-intro {
-  padding: 50px 24px;
+  padding: 40px var(--page-padding) 50px;
 }
 
 .showcase .showcase-intro h2 {
@@ -161,6 +161,10 @@
 }
 
 @media (width >= 981px) {
+  .showcase .showcase-intro h2 {
+    margin-bottom: 100px;
+  }
+
   .showcase {
     grid-template-columns: calc(584px + max(0px, (100vw - 1440px) / 2)) 1fr;
   }
